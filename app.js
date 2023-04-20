@@ -2,6 +2,7 @@ const express = require('express');
 
 const initMongo = require('./MongoDb')
 const userRouter = require("./Routes/HitChikerUserRoutes")
+const rideRoutes = require("./Routes/RideRoutes")
 require('dotenv').config()
 
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // register course routes
 app.use("/users", userRouter);
+app.use("/rides", rideRoutes);
 
 
 // welcome route
