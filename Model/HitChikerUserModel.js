@@ -15,6 +15,10 @@ const HitChikerUserSchema = new mongoose.Schema({
     phoneNumber : {
         type : String,
         required : true
+    },
+    bio : {
+        type: String,
+        default: "Your Bio..."
     }
 })
 

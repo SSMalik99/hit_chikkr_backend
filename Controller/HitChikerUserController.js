@@ -26,6 +26,26 @@ const createUser = async (req, res) => {
     
 }
 
+const updateBio = async (req, res) => {
+    const data = req.body
+
+    if (!data.email) {
+        res.status(400).json({success : false, "message" : "Please provide user email", data : {}})
+        return 
+    }
+    if (!data.bio) {
+        res.status(400).json({success : false, "message" : "Please provide bio for user", data : {}})
+        return 
+    }
+
+    let user = await HitChikerUserModel.findOneAndUpdate({email : data.email}, {
+        bio : data.bio
+    })
+
+    res.status(201).json({success: true,message: `Updated successfully.`, data : user})
+
+}
+
 const getUser = async (req, res) => {
 
     const userEmail = req.params.email;
@@ -52,5 +72,6 @@ const getUser = async (req, res) => {
 
 module.exports = {
     createUser,
-    getUser
+    getUser,
+    updateBio
 }
