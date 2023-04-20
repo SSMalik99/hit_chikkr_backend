@@ -1,4 +1,4 @@
-export const validateDataForRide = (req, res) => {
+const validateDataForRide = (req, res) => {
     if (!data.from) {
         res.status(400).json({success : false, "message" : "Please send place from where you want to start the ride.", data : {}})
         return 
@@ -35,4 +35,9 @@ export const validateDataForRide = (req, res) => {
         return 
     }
 
+}
+
+
+module.exports = {
+    validateDataForRide
 }
