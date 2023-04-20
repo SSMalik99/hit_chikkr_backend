@@ -10,12 +10,13 @@ const router = express.Router()
 
 router
     .post("/", validateDataForRide, createRide) // create user
-    .get("/:id", getSingleRide) //get single user
     .get("/traveller", getTravellers)
+    .post("/delete/:id", deleteRide)
+    .post("/complete/:id", markRideAsCompleted)
+    .get("/ride_count/:email", rideCountForUser)
     .get("/", getRides)
-    .post("delete/:id", deleteRide)
-    .post("complete/:id", markRideAsCompleted)
-    .get("ride_count/:email", rideCountForUser)
+    .get("/:id", getSingleRide) //get single user
+    
     
 
 module.exports = router

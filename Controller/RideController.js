@@ -77,9 +77,11 @@ const getSingleRide = async (req, res) => {
 
 
 const rideCountForUser = async ( req, res) => {
+    console.log("Inside")
     const emailId = req.param.email
     const takenRide = await RideModel.count({contactEmail:emailId, isDriving:false})
     const givenRide = await RideModel.count({contactEmail:emailId, isDriving:true})
+    console.log("YOu are inside")
 
     return res.status(200).json({
         totalRides : givenRide,
