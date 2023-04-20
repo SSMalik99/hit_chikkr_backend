@@ -75,11 +75,25 @@ const getSingleRide = async (req, res) => {
 }
 
 
+
+const rideCountForUser = async ( req, res) => {
+    const emailId = req.param.email
+    const takenRide = await RideModel.count({contactEmail:emailId, isDriving:false})
+    const givenRide = await RideModel.count({contactEmail:emailId, isDriving:true})
+
+    return res.status(200).json({
+        totalRides : givenRide,
+        requestedRide : takenRide
+    })
+}
+
+
 module.exports = {
     createRide,
     getTravellers,
     getRides,
     deleteRide,
     markRideAsCompleted,
-    getSingleRide
+    getSingleRide,
+    rideCountForUser
 }

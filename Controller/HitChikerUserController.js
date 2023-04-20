@@ -46,6 +46,7 @@ const updateBio = async (req, res) => {
 
 }
 
+
 const getUser = async (req, res) => {
 
     const userEmail = req.params.email;
