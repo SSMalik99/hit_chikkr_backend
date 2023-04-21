@@ -31,7 +31,7 @@ const getRides = async (req, res) => {
     const toPostalCode = req.query.to
     const date = req.query.date
 
-    const rides = await RideModel.find({isCompleted : false, date: date})
+    const rides = await RideModel.find({isCompleted : false})
     res.status(200).json({success: true,message: `Available Rides.`, data : rides})
 
 }
