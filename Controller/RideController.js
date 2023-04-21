@@ -6,8 +6,9 @@ const createRide = async (req, res) => {
 
     const data = req.body
    
+    console.log(data)
 
-    let ride = await RideModel.create({ from: data.from, to: data.to, contactEmail: data.contactEmail, contactNumber : data.contactNumber, fromPostalCode : data.fromPostalCode, toPostalCode: data.toPostalCode, isCompleted : data.isCompleted ? data.isCompleted : false, isDriving : data.isDriving ? data.isDriving : false, date : data.date})
+    let ride = await RideModel.create(data)
 
     res.status(201).json({success: true,message: `Your Ride is created successfully.`, data : ride})
     
@@ -26,6 +27,12 @@ const getTravellers = async (req, res) => {
  * Get rides who want to drive
  */
 const getRides = async (req, res) => {
+    const fromPostalCode = req.query.from
+    const toPostalCode = req.query.to
+    const date = req.query.date
+
+    const rides = await RideModel.find({fromPostalCode : fromPostalCode, isCompleted : false, toPostalCode: toPostalCode, date: date})
+    res.status(200).json({success: true,message: `Available Rides.`, data : rides})
 
 }
 

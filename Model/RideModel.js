@@ -9,8 +9,7 @@ const RideSchema = new mongoose.Schema({
     },
     to : {
         type: String,
-        required : true,
-        unique: true
+        required : true
     },
     contactNumber : {
         type : String,
@@ -42,6 +41,14 @@ const RideSchema = new mongoose.Schema({
     },
     description : {
         type : String
+    },
+    placeId : {
+        type: String,
+        required : true
+    },
+    destinationPlaceId : {
+        type : String,
+        required: true
     }
 })
 

@@ -1,4 +1,6 @@
-const validateDataForRide = (req, res) => {
+const validateDataForRide = (req, res, next) => {
+    data = req.body
+
     if (!data.from) {
         res.status(400).json({success : false, "message" : "Please send place from where you want to start the ride.", data : {}})
         return 
@@ -34,6 +36,18 @@ const validateDataForRide = (req, res) => {
         res.status(400).json({success : false, "message" : "Please Provide date", data : {}})
         return 
     }
+
+    if(!data.placeId) {
+        res.status(400).json({success : false, "message" : "Please Provide place Id", data : {}})
+        return 
+    }
+
+    if(!data.destinationPlaceId) {
+        res.status(400).json({success : false, "message" : "Please Provide destination place Id", data : {}})
+        return 
+    }
+
+    next()
 
 }
 
